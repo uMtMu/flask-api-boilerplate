@@ -100,7 +100,8 @@ Blueprints in Flask are intended for these cases:
 [http://flask.pocoo.org/docs/0.12/blueprints/](http://flask.pocoo.org/docs/0.12/blueprints/)
 
 ## marshal_with
-Tuples given keys with their values -> flask-api-boilerplate/app/auth/resources.py:54  
+Tuples given keys with their values  
+[flask-api-boilerplate/app/auth/resources.py:54](https://github.com/uMtMu/flask-api-boilerplate/blob/54ef590c7ff95804beebc24eb0de43acb4a64377/app/auth/resources.py#L54)  
 
 ```python  
 >>> from flask_restful import fields, marshal_with
