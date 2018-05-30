@@ -79,9 +79,28 @@ Postman-Token: 60b8b0c9-21f2-8dfc-53ca-680fb6eb894b
 ```
 
 # Details about code
+## flask blueprints
+A Blueprint object works similarly to a Flask application object, but it is not actually an application. Rather it is a blueprint of how to construct or extend an application. -> [flask-api-boilerplate/app/auth/resources.py:10](https://github.com/uMtMu/flask-api-boilerplate/blob/54ef590c7ff95804beebc24eb0de43acb4a64377/app/auth/resources.py#L10)  
+app1  
+--> app1_blueprint1  
+--> app1_blueprint2  
+--> app1_blueprint3  
+app2  
+--> app2_blueprint1  
+--> app2_blueprint2  
+  
+Blueprints in Flask are intended for these cases:  
+  
+* Factor an application into a set of blueprints. This is ideal for larger applications; a project could instantiate an application object, initialize several extensions, and register a collection of blueprints.  
+* Register a blueprint on an application at a URL prefix and/or subdomain. Parameters in the URL prefix/subdomain become common view arguments (with defaults) across all view functions in the blueprint.  
+* Register a blueprint multiple times on an application with different URL rules.  
+* Provide template filters, static files, templates, and other utilities through blueprints. A blueprint does not have to implement applications or view functions.  
+* Register a blueprint on an application for any of these cases when initializing a Flask extension.  
+
+[http://flask.pocoo.org/docs/0.12/blueprints/](http://flask.pocoo.org/docs/0.12/blueprints/)
+
 ## marshal_with
-Tuples given keys with their values  
-[flask-api-boilerplate/app/auth/resources.py:54](https://github.com/uMtMu/flask-api-boilerplate/blob/54ef590c7ff95804beebc24eb0de43acb4a64377/app/auth/resources.py#L54)  
+Tuples given keys with their values -> flask-api-boilerplate/app/auth/resources.py:54  
 
 ```python  
 >>> from flask_restful import fields, marshal_with
