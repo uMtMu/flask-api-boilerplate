@@ -8,3 +8,6 @@ _mailinglist
 .tox
 *.db
 *.sqlite
+env
+*.history
+.vscode
