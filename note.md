@@ -3,7 +3,8 @@
 virtualenv env  
 . env/bin/activate  
 pip install -r requirements.txt  
-sudo apt-get install sqlitebrowser  
+./manage.py db upgrade
+./manage.py runserver
 ```
 
 # Tools
@@ -75,4 +76,20 @@ Host: localhost:5000
 Authorization: Token   eyJhbGciOiJIUzI1NiIsImV4cCI6MTUyNzY4MzAxMywiaWF0IjoxNTI3NjgyNDEzfQ.eyJpZCI6MX0.I6iXqdomHhKrLu_i-dXhKbFQ7CKmhEXRCR4o7LqDSxc  
 Cache-Control: no-cache  
 Postman-Token: 60b8b0c9-21f2-8dfc-53ca-680fb6eb894b  
+```
+
+# Details about code
+## marshal_with
+Tuples given keys with their values -> flask-api-boilerplate/app/auth/resources.py:54  
+
+```python  
+>>> from flask_restful import fields, marshal_with
+>>> mfields = { 'a': fields.Raw, 'b': fiels.String }
+>>> @marshal_with(mfields)
+... def get():
+...     return { 'a': 100, 'b': 'foo', 'c': 89 }
+...
+...
+>>> get()
+OrderedDict([('a', 100),('b', 'foo')])
 ```
