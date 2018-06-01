@@ -141,3 +141,7 @@ def register_api(view, endpoint, url, pk='id', pk_type='int'):
                      methods=['GET', 'PUT', 'DELETE'])
 
 register_api(UserAPI2, 'user_api2', '/users2/', pk='user_id')
+
+
+if __name__ == "__main__":
+    app.run()
