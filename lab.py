@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask.views import MethodView
 from webargs import fields
-from webargs.flaskparser import use_args
+from webargs.flaskparser import use_kwargs
 import redis
 r = redis.Redis(host='localhost')
 
@@ -19,13 +19,13 @@ class UserAPI(MethodView):
         'name': fields.Str(required=True),
         'age': fields.Int(),
     }
-    @use_args(post_args)
-    def post(self, args):
-        r.set('user%s' % args['id'], args['name'])
-        if 'age' in args.keys():
-            return 'hi %s %s.' % (args['name'], args['age'])
+    @use_kwargs(post_args)
+    def post(self, id, name, age=None):
+        r.set('user%s' % id, name)
+        if age:
+            return 'hi %s %s.' % (name, age)
         else:
-            return 'hi %s.' % (args['name'])
+            return 'hi %s.' % (name)
 
     def delete(self, user_id):
         # delete a single user
