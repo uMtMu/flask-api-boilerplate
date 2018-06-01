@@ -19,7 +19,7 @@ class UserAPI(MethodView):
         'name': fields.Str(required=True),
         'age': fields.Int(),
     }
-    @use_kwargs(post_args)
+    @use_kwargs(post_args, locations=('json', 'form', 'query', 'headers', 'cookies', 'files'))
     def post(self, id, name, age=None):
         r.set('user%s' % id, name)
         if age:
