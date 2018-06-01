@@ -16,7 +16,7 @@ class UserAPI(MethodView):
             return render_template('users.html', objects=[r.get('user%s' % user_id)])
     post_args = {
         'id': fields.Int(required=True),
-        'name': fields.Str(required=True),
+        'name': fields.Str(required=True, validate=lambda v: len(v) < 7),
         'age': fields.Int(),
     }
     @use_kwargs(post_args, locations=('json', 'form', 'query', 'headers', 'cookies', 'files'))
