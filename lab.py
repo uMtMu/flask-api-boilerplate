@@ -1,5 +1,5 @@
-from flask import Flask, render_template, abort
-from flask.views import View, MethodView
+from flask import Flask, render_template
+from flask.views import MethodView
 import redis
 r = redis.Redis(host='localhost')
 
